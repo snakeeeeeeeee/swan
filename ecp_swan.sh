@@ -22,9 +22,12 @@ EOF
 
 source /etc/profile
 
-curl -fsSL https://raw.githubusercontent.com/Minusbill/swan/main/fetch-param-512.sh | bash
+# 512MiB parameters
+curl -fsSL https://raw.githubusercontent.com/swanchain/go-computing-provider/releases/ubi/fetch-param-512.sh | bash
 
-curl -fsSL https://raw.githubusercontent.com/Minusbill/swan/main/fetch-param-32.sh | bash
+# 32GiB parameters
+curl -fsSL https://raw.githubusercontent.com/swanchain/go-computing-provider/releases/ubi/fetch-param-32.sh | bash
+
 
 wget https://github.com/swanchain/go-computing-provider/releases/download/v0.4.8/computing-provider
 
