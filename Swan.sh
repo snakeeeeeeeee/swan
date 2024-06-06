@@ -26,11 +26,11 @@ curl -fsSL https://raw.githubusercontent.com/Minusbill/swan/main/fetch-param-512
 
 curl -fsSL https://raw.githubusercontent.com/Minusbill/swan/main/fetch-param-32.sh | bash
 
-wget https://github.com/swanchain/go-computing-provider/releases/download/v0.4.7/computing-provider
+wget https://github.com/swanchain/go-computing-provider/releases/download/v0.4.8/computing-provider
 
 chmod +x computing-provider
 
-./computing-provider init --multi-address=/ip4/$ECP_IP/tcp/$ECP_PORT --node-name=swannode
+./computing-provider init --multi-address=/ip4/$ECP_IP/tcp/$ECP_PORT --node-name=ikunkun
 
 ./computing-provider wallet import private.key
 
