@@ -40,20 +40,20 @@ COLLATERAL_AMOUNT=$4
 cd ~
 
 # 删除旧的运行环境
-echo "删除.swan"
+echo ">>>删除.swan"
 rm -rf .swan
 
 # 将私钥写入文件
-echo "写入私钥到 private.key"
+echo ">>>写入私钥到 private.key"
 echo $PRIVATE_KEY > private.key
 
 # 停止并移除 Docker 容器
-echo "停止并移除容器 ubi-redis 和 resource-exporter"
+echo ">>>停止并移除容器 ubi-redis 和 resource-exporter"
 docker stop ubi-redis resource-exporter || true
 docker rm ubi-redis resource-exporter || true
 
 # 删除旧的 computing-provider
-echo "删除旧的 computing-provider"
+echo ">>>删除旧的 computing-provider"
 rm -rf computing-provider
 
 # 下载新的 computing-provider
@@ -67,27 +67,29 @@ if [ ! -f "computing-provider" ]; then
 fi
 
 # 添加执行权限
-echo "添加执行权限"
+echo ">>>添加执行权限"
 chmod +x computing-provider
 
 # 初始化 computing-provider
-echo "初始化 computing-provider"
+echo ">>>初始化 computing-provider"
 ./computing-provider init --multi-address=/ip4/$IP/tcp/9085 --node-name=ikun3
 
 # 导入钱包私钥
-echo "导入钱包私钥"
+echo ">>>导入钱包私钥"
 ./computing-provider wallet import private.key
 
 # 创建账户
-echo "创建账户"
+echo ">>>创建账户"
 ./computing-provider account create --ownerAddress $ADDRESS --workerAddress $ADDRESS --beneficiaryAddress $ADDRESS --task-types 1,2,4
 sleep 5
 
 # 增加抵押
-echo "增加抵押"
+echo ">>>增加质押"
 ./computing-provider collateral add --ecp --from=$ADDRESS $COLLATERAL_AMOUNT
 sleep 5
 
 # 启动 ubi daemon
-echo "启动 ubi daemon"
+echo ">>>启动 ubi daemon"
 ./computing-provider ubi daemon
+
+echo "=======================完成0.5.0升级================================"
