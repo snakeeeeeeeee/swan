@@ -9,6 +9,11 @@ usage() {
   exit 1
 }
 
+# 函数：生成10位随机小写字母字符串
+generate_random_string() {
+  tr -dc 'a-z' < /dev/urandom | head -c 10
+}
+
 # 参数验证
 if [ -z "$1" ]; then
   echo "Error: 'IP' is required."
@@ -35,6 +40,10 @@ IP=$1
 ADDRESS=$2
 PRIVATE_KEY=$3
 COLLATERAL_AMOUNT=$4
+
+# 生成10位随机小写字母字符串
+NODE_NAME=$(generate_random_string)
+echo "生成的节点名称是：$NODE_NAME"
 
 # 根目录
 cd ~
@@ -80,7 +89,7 @@ chmod +x computing-provider
 
 # 初始化 computing-provider
 echo ">>>初始化 computing-provider"
-./computing-provider init --multi-address=/ip4/$IP/tcp/9085 --node-name=ikun3
+./computing-provider init --multi-address=/ip4/$IP/tcp/9085 --node-name=$NODE_NAME
 
 # 导入钱包私钥
 echo ">>>导入钱包私钥"
