@@ -40,8 +40,12 @@ COLLATERAL_AMOUNT=$4
 cd ~
 
 # 备份私钥
-echo ">>>正在备份私钥"
-cp private.key private_backup.key
+if [ -f "private.key" ]; then
+  echo ">>>正在备份私钥"
+  cp private.key private_backup.key
+else
+  echo ">>>私钥文件不存在，跳过备份"
+fi
 
 # 删除旧的运行环境
 echo ">>>删除.swan"
