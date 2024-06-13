@@ -39,6 +39,10 @@ COLLATERAL_AMOUNT=$4
 # 根目录
 cd ~
 
+# 备份私钥
+echo ">>>正在备份私钥"
+cp private.key private_backup.key
+
 # 删除旧的运行环境
 echo ">>>删除.swan"
 rm -rf .swan
