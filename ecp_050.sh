@@ -91,5 +91,3 @@ sleep 5
 # 启动 ubi daemon
 echo ">>>启动 ubi daemon"
 ./computing-provider ubi daemon
-
-echo "=======================完成0.5.0升级================================"
