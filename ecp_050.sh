@@ -5,7 +5,7 @@ set -e
 
 # 函数：打印使用方法
 usage() {
-  echo "Usage: $0 <IP> <ADDRESS> <PRIVATE_KEY> <COLLATERAL_AMOUNT>"
+  echo "Usage: $0 <IP> <钱包地址> <私钥去掉0x> <质押金额(每次消耗0.0005)>"
   exit 1
 }
 
@@ -40,7 +40,7 @@ COLLATERAL_AMOUNT=$4
 cd ~
 
 # 删除旧的运行环境
-echo "删除.swan文"
+echo "删除.swan"
 rm -rf .swan
 
 # 将私钥写入文件
