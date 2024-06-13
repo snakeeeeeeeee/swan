@@ -81,10 +81,12 @@ echo "导入钱包私钥"
 # 创建账户
 echo "创建账户"
 ./computing-provider account create --ownerAddress $ADDRESS --workerAddress $ADDRESS --beneficiaryAddress $ADDRESS --task-types 1,2,4
+sleep 5
 
 # 增加抵押
 echo "增加抵押"
 ./computing-provider collateral add --ecp --from=$ADDRESS $COLLATERAL_AMOUNT
+sleep 5
 
 # 启动 ubi daemon
 echo "启动 ubi daemon"
