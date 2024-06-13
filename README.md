@@ -1,3 +1,3 @@
 # swan
 ## ECP
-wget -O ecp_swan.sh https://raw.githubusercontent.com/snakeeeeeeeee/swan/main/ecp_swan.sh && chmod +x ecp_swan.sh && ./ecp_swan.sh
+wget -O ecp_050.sh https://raw.githubusercontent.com/snakeeeeeeeee/swan/main/ecp_050.sh && chmod +x ecp_050.sh && ./ecp_050.sh
