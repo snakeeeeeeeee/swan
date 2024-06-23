@@ -26,7 +26,7 @@ curl -fsSL https://raw.githubusercontent.com/Minusbill/swan/main/fetch-param-512
 
 curl -fsSL https://raw.githubusercontent.com/Minusbill/swan/main/fetch-param-32.sh | bash
 
-wget https://github.com/swanchain/go-computing-provider/releases/download/v0.4.8/computing-provider
+wget https://github.com/swanchain/go-computing-provider/releases/download/v0.5.1/computing-provider
 
 chmod +x computing-provider
 
