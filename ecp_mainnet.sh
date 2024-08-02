@@ -5,7 +5,7 @@ set -e
 
 # 函数：打印使用方法
 usage() {
-  echo "Usage: $0 <IP> <钱包地址> <私钥去掉0x> <质押金额(每次消耗0.0005)>"
+  echo "Usage: $0 <IP> <钱包地址> <私钥去掉0x> <质押金额> <存款ETH金额>"
   exit 1
 }
 
@@ -35,11 +35,17 @@ if [ -z "$4" ]; then
   usage
 fi
 
+if [ -z "$5" ]; then
+  echo "Error: 'SWANETH_AMOUNT' is required."
+  usage
+fi
+
 # 设置环境变量
 IP=$1
 ADDRESS=$2
 PRIVATE_KEY=$3
 COLLATERAL_AMOUNT=$4
+SWANETH_AMOUNT=$5
 
 # 生成10位随机小写字母字符串
 NODE_NAME=$(generate_random_string)
@@ -103,6 +109,11 @@ sleep 5
 # 增加抵押
 echo ">>>增加质押"
 ./computing-provider collateral add --ecp --from=$ADDRESS $COLLATERAL_AMOUNT
+sleep 5
+
+# 存款SwanETH至Sequencer账户
+echo ">>>存款SwanETH至Sequencer账户"
+./computing-provider sequencer add --from $ADDRESS  $SWANETH_AMOUNT
 sleep 5
 
 # 启动 ubi daemon
