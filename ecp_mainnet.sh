@@ -114,7 +114,7 @@ sleep 10
 # 存款SwanETH至Sequencer账户
 echo ">>>存款SwanETH至Sequencer账户"
 ./computing-provider sequencer add --from $ADDRESS  $SWANETH_AMOUNT
-sleep 10
+sleep 3
 
 # 启动 ubi daemon
 echo ">>>启动 ubi daemon"
