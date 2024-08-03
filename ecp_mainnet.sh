@@ -104,17 +104,17 @@ echo ">>>导入钱包私钥"
 # 创建账户
 echo ">>>创建账户"
 ./computing-provider account create --ownerAddress $ADDRESS --workerAddress $ADDRESS --beneficiaryAddress $ADDRESS --task-types 1,2,4
-sleep 5
+sleep 10
 
 # 增加抵押
 echo ">>>增加质押"
 ./computing-provider collateral add --ecp --from=$ADDRESS $COLLATERAL_AMOUNT
-sleep 5
+sleep 10
 
 # 存款SwanETH至Sequencer账户
 echo ">>>存款SwanETH至Sequencer账户"
 ./computing-provider sequencer add --from $ADDRESS  $SWANETH_AMOUNT
-sleep 5
+sleep 10
 
 # 启动 ubi daemon
 echo ">>>启动 ubi daemon"
